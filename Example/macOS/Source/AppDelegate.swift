@@ -1,5 +1,5 @@
 //
-//  SegueHandling.h
+//  AppDelegate.swift
 //
 //  Copyright (c) 2017 Keiichi Sato. All rights reserved.
 //
@@ -22,7 +22,15 @@
 //  THE SOFTWARE.
 //
 
-@import Foundation;
+import Cocoa
 
-FOUNDATION_EXPORT double SegueHandlingVersionNumber;
-FOUNDATION_EXPORT const unsigned char SegueHandlingVersionString[];
+@NSApplicationMain
+class AppDelegate: NSObject, NSApplicationDelegate {
+
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
+    }
+
+    func applicationWillTerminate(_ aNotification: Notification) {
+    }
+}
+

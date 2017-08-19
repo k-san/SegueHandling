@@ -44,9 +44,9 @@ class FirstViewController: UIViewController, SegueHandling {
         }
         switch segueIdentifier {
         case .push:
-            secondViewController.message = "This view controller was pushed from FirstViewController."
+            secondViewController.message = "Push"
         case .modal:
-            secondViewController.message = "This view controller was presented modally from FirstViewController."
+            secondViewController.message = "Modal"
         }
     }
     
