@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  FirstViewController.swift
 //
 //  Copyright (c) 2017 Keiichi Sato. All rights reserved.
 //
@@ -22,38 +22,51 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import Cocoa
 import SegueHandling
 
-class SecondViewController: UIViewController, SegueHandling {
+class FirstViewController: NSViewController, SegueHandling {
     
-    var message = "" {
-        didSet {
-            self.messageLabel?.text = message
-        }
-    }
-    
-    @IBOutlet fileprivate weak var messageLabel: UILabel?
+    // MARK: NSViewController
 
-    // MARK: UIViewController
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.messageLabel?.text = self.message
+    }
+    
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        guard let segueIdentifier = segueIdentifier(for: segue) else {
+            // Unexpected segue
+            return
+        }
+        guard let secondViewController = segue.destinationController as? SecondViewController else {
+            // Unexpected destination
+            return
+        }
+        switch segueIdentifier {
+        case .show:
+            secondViewController.representedObject = "Show"
+        case .popover:
+            secondViewController.representedObject = "Popover"
+        }
     }
     
     // MARK: SegueHandling
     
     enum SegueIdentifier: String {
-        case dismiss
+        case show
+        case popover
     }
 }
 
 // MARK: Actions
 
-extension SecondViewController {
+extension FirstViewController {
     
-    @IBAction private func dismissButtonDidTap( _ sender: Any?) {
-        self.performSegue(withIdentifier: .dismiss, sender: nil)
+    @IBAction private func showButtonDidTap( _ sender: Any?) {
+        self.performSegue(withIdentifier: .show, sender: nil)
+    }
+    
+    @IBAction private func popoverButtonDidTap( _ sender: Any?) {
+        self.performSegue(withIdentifier: .popover, sender: nil)
     }
 }

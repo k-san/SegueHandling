@@ -22,12 +22,17 @@
 //  THE SOFTWARE.
 //
 
+#if os(iOS)
 import UIKit
+#elseif os(macOS)
+import AppKit
+#endif
 
 public protocol SegueHandling {
     associatedtype SegueIdentifier: RawRepresentable
 }
 
+#if os(iOS)
 public extension SegueHandling where Self: UIViewController, SegueIdentifier.RawValue == String {
     
     func performSegue(withIdentifier segueIdentifier: SegueIdentifier, sender: Any?) {
@@ -45,3 +50,24 @@ public extension SegueHandling where Self: UIViewController, SegueIdentifier.Raw
         return segueIdentifier
     }
 }
+#endif
+
+#if os(macOS)
+    public extension SegueHandling where Self: NSViewController, SegueIdentifier.RawValue == String {
+        
+        func performSegue(withIdentifier segueIdentifier: SegueIdentifier, sender: Any?) {
+            
+            performSegue(withIdentifier: segueIdentifier.rawValue, sender: sender)
+        }
+        
+        func segueIdentifier(for segue: NSStoryboardSegue) -> SegueIdentifier? {
+            guard
+                let identifier = segue.identifier,
+                let segueIdentifier = SegueIdentifier(rawValue: identifier)
+                else {
+                    return nil
+            }
+            return segueIdentifier
+        }
+    }
+#endif

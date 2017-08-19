@@ -16,6 +16,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		BF5872EC1F37799D00365E0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF9C41901F3485AF0033DC6F /* SegueHandling.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BF5872BF1F361C4200365E0E;
+			remoteInfo = "SegueHandling macOS";
+		};
 		BF9C41941F3485AF0033DC6F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BF9C41901F3485AF0033DC6F /* SegueHandling.xcodeproj */;
@@ -76,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				BF9C41951F3485AF0033DC6F /* SegueHandling.framework */,
+				BF5872ED1F37799D00365E0E /* SegueHandling.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -156,6 +164,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		BF5872ED1F37799D00365E0E /* SegueHandling.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SegueHandling.framework;
+			remoteRef = BF5872EC1F37799D00365E0E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		BF9C41951F3485AF0033DC6F /* SegueHandling.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;

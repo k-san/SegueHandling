@@ -1,5 +1,5 @@
 //
-//  SegueHandling.h
+//  SecondViewController.swift
 //
 //  Copyright (c) 2017 Keiichi Sato. All rights reserved.
 //
@@ -22,7 +22,32 @@
 //  THE SOFTWARE.
 //
 
-@import Foundation;
+import Cocoa
+import SegueHandling
 
-FOUNDATION_EXPORT double SegueHandlingVersionNumber;
-FOUNDATION_EXPORT const unsigned char SegueHandlingVersionString[];
+class SecondViewController: NSViewController {
+    
+    @IBOutlet fileprivate weak var messageTextField: NSTextField?
+    
+    // MARK: NSViewController
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.updateMessage()
+    }
+    
+    override var representedObject: Any? {
+        didSet {
+            self.updateMessage()
+        }
+    }
+    
+    // MARK: Private
+    
+    private func updateMessage() {
+        guard let string = self.representedObject as? String else {
+            return
+        }
+        self.messageTextField?.stringValue = string
+    }
+}
